@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | LocalHub</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <nav class="navbar glass">
+        <div class="logo">
+            <i class="fas fa-shield-halved"></i> Admin Panel
+        </div>
+
+        <div class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <section class="admin-section">
+
+        <div class="glass admin-card">
+            <h2><i class="fas fa-users"></i> Registered Users</h2>
+            {% for user in users %}
+                <div class="list-item">
+                    {{ user.name }} — {{ user.email }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="glass admin-card">
+            <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+            {% for item in announcements %}
+                <div class="list-item">{{ item }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="glass admin-card">
+            <h2><i class="fas fa-star"></i> Reviews</h2>
+            {% for review in reviews %}
+                <div class="list-item">{{ review }}</div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalHub Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <nav class="navbar glass">
+        <div class="logo">
+            <i class="fas fa-location-dot"></i> LocalHub
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content glass">
+            <h1>Explore Anywhere, Instantly</h1>
+            <p>
+                Discover nearby restaurants, hotels, hospitals,
+                tourist places, weather, and local services —
+                wherever you go.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/register" class="btn primary-btn">Get Started</a>
+                <a href="/login" class="btn secondary-btn">Login</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card glass">
+            <i class="fas fa-map-location-dot"></i>
+            <h3>Live GPS Detection</h3>
+            <p>Auto-detect your current location in real time.</p>
+        </div>
+
+        <div class="feature-card glass">
+            <i class="fas fa-cloud-sun"></i>
+            <h3>Weather Updates</h3>
+            <p>See local weather conditions instantly.</p>
+        </div>
+
+        <div class="feature-card glass">
+            <i class="fas fa-utensils"></i>
+            <h3>Nearby Places</h3>
+            <p>Find restaurants, hotels, hospitals & more.</p>
+        </div>
+
+        <div class="feature-card glass">
+            <i class="fas fa-heart"></i>
+            <h3>Favorites</h3>
+            <p>Save your favorite places for quick access.</p>
+        </div>
+    </section>
+
+    <footer class="footer glass">
+        <p>© 2026 LocalHub Pro | Smart Local Guide</p>
+    </footer>
+
+</body>
+</html>

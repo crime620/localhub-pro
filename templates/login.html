@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | LocalHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="dark-theme auth-page">
+
+    <div class="auth-container glass">
+        <div class="auth-header">
+            <i class="fas fa-location-dot auth-icon"></i>
+            <h2>Welcome Back</h2>
+            <p>Login to continue exploring nearby places</p>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-msg">
+                    {% for msg in messages %}
+                        <p>{{ msg }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" class="auth-form">
+            <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email address" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="btn primary-btn full-btn">
+                Login
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p>
+                Don't have an account?
+                <a href="/register">Create one</a>
+            </p>
+            <a href="/" class="back-home">
+                <i class="fas fa-arrow-left"></i> Back Home
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
