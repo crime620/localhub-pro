@@ -116,28 +116,28 @@ def nearby_places():
         lon = data["lon"]
         place_type = data["type"]
 
-        # Hotels use tourism=hotel
-        if place_type == "hotel":
-            query = f"""
-            [out:json][timeout:25];
-            (
-              node["tourism"="hotel"](around:5000,{lat},{lon});
-              way["tourism"="hotel"](around:5000,{lat},{lon});
-              relation["tourism"="hotel"](around:5000,{lat},{lon});
-            );
-            out center;
-            """
-        else:
-            # Restaurants / hospitals / banks use amenity
-            query = f"""
-            [out:json][timeout:25];
-            (
-              node["amenity"="{place_type}"](around:5000,{lat},{lon});
-              way["amenity"="{place_type}"](around:5000,{lat},{lon});
-              relation["amenity"="{place_type}"](around:5000,{lat},{lon});
-            );
-            out center;
-            """
+        tag_map = {
+            "restaurant": ("amenity", "restaurant"),
+            "hospital": ("amenity", "hospital"),
+            "bank": ("amenity", "bank"),
+            "pharmacy": ("amenity", "pharmacy"),
+            "fuel": ("amenity", "fuel"),
+            "police": ("amenity", "police"),
+            "hotel": ("tourism", "hotel"),
+            "tourism": ("tourism", "attraction")
+        }
+
+        key, value = tag_map.get(place_type, ("amenity", place_type))
+
+        query = f"""
+[out:json][timeout:25];
+(
+  node["{key}"="{value}"](around:15000,{lat},{lon});
+  way["{key}"="{value}"](around:15000,{lat},{lon});
+  relation["{key}"="{value}"](around:15000,{lat},{lon});
+);
+out center;
+"""
 
         response = requests.post(
             "https://overpass-api.de/api/interpreter",
