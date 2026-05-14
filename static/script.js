@@ -136,6 +136,9 @@ html += `
     }
 
     document.getElementById("placesContainer").innerHTML = html;
+document.querySelector(".places-card").scrollIntoView({
+    behavior: "smooth"
+});
 }
 
 async function saveFavorite(name) {
